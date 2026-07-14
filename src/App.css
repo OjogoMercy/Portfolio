@@ -2,8 +2,8 @@
 
 @theme {
   /* Backgrounds */
-  --page-bg: #0b1120; /* page background */
-  --sidebar-bg: #131b2e; /* sidebar / card background */
+  --color-page-bg: #0b1120; /* page background */
+  --color-sidebar-bg: #131b2e; /* sidebar / card background */
 
   /* Accent */
   --color-accent: #f0755a; /* coral */

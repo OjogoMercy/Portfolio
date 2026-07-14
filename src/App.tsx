@@ -1,122 +1,65 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import heroImg from './assets/hero.png'
-import './App.css'
-
+import "./App.css";
+import { Mail, Phone } from "lucide-react";
+import { FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa";
 function App() {
-  const [count, setCount] = useState(0)
-
+  const image = "/src/assets/profile.png";
   return (
-    <>
-      <section id="center">
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
+    <div className="flex  flex-col md:flex-row min-h-screen bg-page-bg">
+      <aside className="w-full md:w-2/5 md:h-screen md:sticky md:top-0 p-6 sm:p-10 ml-5">
+        <img
+          src={image}
+          className="w-24 h-24 sm:w-32 sm:h-32 md:w-48 md:h-48 lg:w-70 lg:h-70 object-cover rounded-full mt-6 md:mt-15"
+        />
+        <h1 className="text-2xl sm:text-3xl md:text-4xl text-text-primary font-bold mt-5 mb-5">
+          Ojogo Mercy
+        </h1>
+        <h2 className="text-text-secondary text-sm sm:text-base mt-3 mb-3">
+          Mobile and Frontend Engineer
+        </h2>
+        <h2 className="text-text-secondary text-sm sm:text-base">
+          I help founders and startups launch investor-ready websites and mobile
+          applications fast and without execution friction
+        </h2>
+
+        <div className="flex gap-5 mt-8">
+          <a
+            href="https://github.com/yourusername"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <FaGithub className="w-5 h-5 text-text-secondary hover:text-accent transition-colors" />
+          </a>
+          <a
+            href="https://linkedin.com/in/yourusername"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <FaLinkedin className="w-5 h-5 text-text-secondary hover:text-accent transition-colors" />
+          </a>
+          <a
+            href="https://x.com/yourusername"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <FaTwitter className="w-5 h-5 text-text-secondary hover:text-accent transition-colors" />
+          </a>
+          <a href="mailto:you@email.com">
+            <Mail className="w-5 h-5 text-text-secondary hover:text-accent transition-colors" />
+          </a>
+          <a href="tel:+234...">
+            <Phone className="w-5 h-5 text-text-secondary hover:text-accent transition-colors" />
+          </a>
         </div>
-        <div>
-          <h1>Get started</h1>
-          <p>
-            Edit <code>src/App.tsx</code> and save to test <code>HMR</code>
-          </p>
-        </div>
-        <button
-          type="button"
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
-        >
-          Count is {count}
-        </button>
-      </section>
+      </aside>
 
       <div className="ticks"></div>
 
-      <section id="next-steps">
-        <div id="docs">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#documentation-icon"></use>
-          </svg>
-          <h2>Documentation</h2>
-          <p>Your questions, answered</p>
-          <ul>
-            <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img className="logo" src={viteLogo} alt="" />
-                Explore Vite
-              </a>
-            </li>
-            <li>
-              <a href="https://react.dev/" target="_blank">
-                <img className="button-icon" src={reactLogo} alt="" />
-                Learn more
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div id="social">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#social-icon"></use>
-          </svg>
-          <h2>Connect with us</h2>
-          <p>Join the Vite community</p>
-          <ul>
-            <li>
-              <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#github-icon"></use>
-                </svg>
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://chat.vite.dev/" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#discord-icon"></use>
-                </svg>
-                Discord
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/vite_js" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#x-icon"></use>
-                </svg>
-                X.com
-              </a>
-            </li>
-            <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#bluesky-icon"></use>
-                </svg>
-                Bluesky
-              </a>
-            </li>
-          </ul>
-        </div>
-      </section>
+      <section id="next-steps"></section>
 
       <div className="ticks"></div>
       <section id="spacer"></section>
-    </>
-  )
+    </div>
+  );
 }
 
-export default App
+export default App;
