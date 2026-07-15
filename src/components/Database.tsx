@@ -1,7 +1,15 @@
 export interface ExperienceItem {
   id: string;
   company: string;
-  role?: string;
+  role: string;
+  logo: string;
+  highlights: string[];
+  tags: string[];
+}
+
+export interface ProjectItem {
+  id: string;
+  company: string;
   logo: string;
   highlights: string[];
   tags: string[];
@@ -61,7 +69,7 @@ export const experience: ExperienceItem[] = [
   },
 ];
 
-export const Projects: ExperienceItem[] = [
+export const Projects: ProjectItem[] = [
   {
     id: "1",
     company: "HealthCard (In Progress)",

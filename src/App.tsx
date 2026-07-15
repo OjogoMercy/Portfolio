@@ -1,8 +1,9 @@
 import "./App.css";
 import { Mail, Phone } from "lucide-react";
 import { FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa";
-import { experience } from "./components/Database";
+import { experience,Projects } from "./components/Database";
 import ExperienceCard from "./components/ExperienceCard";
+import ProjectCard from "./components/ProjectCard";
 function App() {
   return (
     <div className="flex  flex-col md:flex-row min-h-screen bg-page-bg">
@@ -89,11 +90,15 @@ function App() {
           ))}
         </section>
 
-        <section id="projects" className="mb-16 sm:mb-24">
-          <h2 className="text-xl sm:text-2xl text-text-primary font-bold mb-4">
+        <section id="projects" className="mt-15 sm:mt-20">
+                   <h2 className="text-text-primary font-bold text-2xl">
             Projects
           </h2>
-          {/* project cards */}
+          {
+          Projects.map((item)=>(
+            <ProjectCard item={item} key={item.id}/>
+          ))
+          }
         </section>
 
         <footer className="text-text-secondary text-sm pt-8 border-t border-border">
