@@ -7,47 +7,47 @@ import ProjectCard from "./components/ProjectCard";
 import SideNav from "./components/SideNav";
 import { useEffect } from "react";
 function App() {
-useEffect(() => {
-  let x = 0;
-  let y = 0;
+  useEffect(() => {
+    let x = 0;
+    let y = 0;
 
-  let targetX = 0;
-  let targetY = 0;
+    let targetX = 0;
+    let targetY = 0;
 
-  let raf: number;
-  let last = performance.now();
+    let raf: number;
+    let last = performance.now();
 
-  const FOLLOW_SPEED = 3; // Lower = more trailing (try 2–4)
+    const FOLLOW_SPEED = 3; // Lower = more trailing (try 2–4)
 
-  const animate = (now: number) => {
-    const dt = (now - last) / 1000;
-    last = now;
+    const animate = (now: number) => {
+      const dt = (now - last) / 1000;
+      last = now;
 
-    // Frame-rate independent smoothing
-    const alpha = 1 - Math.exp(-FOLLOW_SPEED * dt);
+      // Frame-rate independent smoothing
+      const alpha = 1 - Math.exp(-FOLLOW_SPEED * dt);
 
-    x += (targetX - x) * alpha;
-    y += (targetY - y) * alpha;
+      x += (targetX - x) * alpha;
+      y += (targetY - y) * alpha;
 
-    document.documentElement.style.setProperty("--mouse-x", `${x}px`);
-    document.documentElement.style.setProperty("--mouse-y", `${y}px`);
+      document.documentElement.style.setProperty("--mouse-x", `${x}px`);
+      document.documentElement.style.setProperty("--mouse-y", `${y}px`);
 
+      raf = requestAnimationFrame(animate);
+    };
+
+    const handleMouseMove = (e: MouseEvent) => {
+      targetX = e.clientX;
+      targetY = e.clientY;
+    };
+
+    window.addEventListener("mousemove", handleMouseMove, { passive: true });
     raf = requestAnimationFrame(animate);
-  };
 
-  const handleMouseMove = (e: MouseEvent) => {
-    targetX = e.clientX;
-    targetY = e.clientY;
-  };
-
-  window.addEventListener("mousemove", handleMouseMove, { passive: true });
-  raf = requestAnimationFrame(animate);
-
-  return () => {
-    window.removeEventListener("mousemove", handleMouseMove);
-    cancelAnimationFrame(raf);
-  };
-}, []);
+    return () => {
+      window.removeEventListener("mousemove", handleMouseMove);
+      cancelAnimationFrame(raf);
+    };
+  }, []);
   return (
     <div className="flex flex-col md:flex-row min-h-screen bg-page-bg">
       <div
@@ -68,11 +68,11 @@ useEffect(() => {
           mixBlendMode: "screen",
         }}
       />
-      <aside className="w-full md:w-2/5 md:h-screen md:sticky md:top-0 p-5 sm:p-10 mx-auto">
-        <h1 className="text-4xl sm:text-3xl md:text-4xl text-text-primary font-bold mt-5 mb-5">
+      <aside className="w-full md:w-2/5 mt-3 md:h-screen md:sticky md:top-5 p-5 sm:p-10 mx-auto">
+        <h1 className="text-5xl sm:text-6xl md:text-5xl lg:text-5xl text-text-primary font-bold mt-3 mb-5 tracking-tight">
           Ojogo Mercy
         </h1>
-        <h2 className="text-text-primary text-2xl sm:text-base mt-3 mb-3">
+        <h2 className="text-text-primary text-xl sm:text-lg md:text-lg mt-3 mb-3 ">
           Mobile and Frontend Engineer
         </h2>
         <h2 className="text-text-muted text-sm sm:text-base">
