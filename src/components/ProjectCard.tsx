@@ -8,7 +8,7 @@ export default function ProjectCard({ item }: { item: ProjectItem }) {
         alt={item.company}
         className="h-40 w-full sm:h-24 sm:w-24 md:h-30 md:w-25 rounded-md object-contain shrink-0 mr-5 mt-5 sm:self-start"
       />
-      <div>
+      <div className="mt-5">
         <a href={item.link}>
           <h3 className="text-text-primary mt-3 md:mt-0 text-base sm:text-lg transition-colors duration-200 group-hover:text-accent">
             {item.company}

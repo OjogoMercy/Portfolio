@@ -97,8 +97,13 @@ function App() {
           ))}
         </section>
 
-        <footer className="text-text-secondary text-sm pt-8 border-t border-border">
-          {/* footer content */}
+        <footer className=" text-center space-y-2 mt-15 mr-auto self-start">
+          <p className="text-sm text-text-primary">
+            Designed & Built by Ojogo Mercy
+          </p>
+          <p className="text-sm text-text-secondary">
+            © 2026 Mercy. All Rights Reserved.
+          </p>
         </footer>
       </main>
     </div>
