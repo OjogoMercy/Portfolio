@@ -2,7 +2,7 @@ import type { ProjectItem } from "./Database";
 
 export default function ProjectCard({ item }: { item: ProjectItem }) {
   return (
-    <div className="bg-page-bg p-5 mt-5  sm:p-7 hover:bg-sidebar-bg rounded flex flex-col-reverse md:flex-row  group">
+    <div className="bg-page-bg p-5 mt-5  sm:p-7 hover:bg-sidebar-bg rounded flex flex-col-reverse md:flex-row  group ">
       <img
         src={item.logo}
         alt={item.company}

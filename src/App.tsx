@@ -7,7 +7,7 @@ import ProjectCard from "./components/ProjectCard";
 import SideNav from "./components/SideNav";
 function App() {
   return (
-    <div className="flex  flex-col md:flex-row min-h-screen bg-page-bg">
+    <div className="flex  flex-col md:flex-row min-h-screen bg-page-bg md:pl-10 pr-10 ">
       <aside className="w-full md:w-2/5 md:h-screen md:sticky md:top-0 p-5 sm:p-10 mx-auto">
         <h1 className="text-4xl sm:text-3xl md:text-4xl text-text-primary font-bold mt-5 mb-5">
           Ojogo Mercy
@@ -19,7 +19,7 @@ function App() {
           Building products that start with better questions, not just better
           code.
         </h2>
-        <div className="mt-20">
+        <div className="mt-20 mb-15">
           <SideNav />
         </div>
 
@@ -53,7 +53,7 @@ function App() {
           </a>
         </div>
       </aside>
-      <main className="w-full md:w-2/4 p-6 sm:p-10 mx-auto text-text-secondary text-sm sm:text-base  leading-relaxed ">
+      <main className="w-full md:w-2/4 py-6 px-5 md:p-10 mx-auto text-text-secondary text-sm sm:text-base leading-relaxed">
         <section id="about" className="mt-10 sm:mb-24">
           <h3 className=" text-text-secondary mb-4">
             Good software isn't just built with code. It's built through
@@ -87,14 +87,17 @@ function App() {
           </h3>
         </section>
 
-        <section id="experience" className="mt-15 sm:mt-20 ">
+        <section id="experience" className="mt-15 sm:mt-20 overflow-x-hidden">
           <h2 className="text-text-primary font-bold text-2xl">Experience</h2>
           {experience.map((item) => (
             <ExperienceCard item={item} key={item.id} />
           ))}
         </section>
 
-        <section id="projects" className="mt-15 sm:mt-20">
+        <section
+          id="projects"
+          className="mt-15 sm:mt-20 w-full overflow-x-hidden"
+        >
           <h2 className="text-text-primary font-bold text-2xl">Projects</h2>
           {Projects.map((item) => (
             <ProjectCard item={item} key={item.id} />

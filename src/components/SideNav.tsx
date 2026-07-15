@@ -15,32 +15,27 @@ export default function SideNav() {
   const [active, setActive] = useState("about");
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const visible = entries
-          .filter((e) => e.isIntersecting)
-          .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top);
+    const handleScroll = (): void => {
+      const sections = navItems.map((link) => document.getElementById(link.id));
+      const scrollPosition = window.scrollY + 100;
 
-        if (visible.length > 0) {
-          setActive(visible[0].target.id);
+      sections.forEach((section, index) => {
+        if (section) {
+          const sectionTop = section.offsetTop;
+          const sectionHeight = section.offsetHeight;
+          if (
+            scrollPosition >= sectionTop &&
+            scrollPosition < sectionTop + sectionHeight
+          ) {
+            setActive(navItems[index].id);
+          }
         }
-      },
-      {
-        rootMargin: "-20% 0px -70% 0px",
-        threshold: 0,
-      },
-    );
-
-    navItems
-      .filter((item) => !item.href)
-      .forEach(({ id }) => {
-        const el = document.getElementById(id);
-        if (el) observer.observe(el);
       });
+    };
 
-    return () => observer.disconnect();
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-
   const scrollTo = (id: string, href?: string) => {
     if (href) {
       window.open(href, "_blank");
@@ -56,7 +51,7 @@ export default function SideNav() {
           <button
             key={id}
             onClick={() => scrollTo(id, href)}
-            className="flex items-center gap-4 group text-left"
+            className="flex items-center gap-4 group text-left mt-5"
           >
             <span
               className={`h-px transition-all duration-300 ${
