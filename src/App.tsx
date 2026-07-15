@@ -7,24 +7,65 @@ import ProjectCard from "./components/ProjectCard";
 import SideNav from "./components/SideNav";
 import { useEffect } from "react";
 function App() {
-  useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      document.documentElement.style.setProperty("--mouse-x", `${e.clientX}px`);
-      document.documentElement.style.setProperty("--mouse-y", `${e.clientY}px`);
-    };
+useEffect(() => {
+  let x = 0;
+  let y = 0;
 
-    window.addEventListener("mousemove", handleMouseMove);
-    return () => window.removeEventListener("mousemove", handleMouseMove);
-  }, []);
+  let targetX = 0;
+  let targetY = 0;
 
+  let raf: number;
+  let last = performance.now();
+
+  const FOLLOW_SPEED = 3; // Lower = more trailing (try 2–4)
+
+  const animate = (now: number) => {
+    const dt = (now - last) / 1000;
+    last = now;
+
+    // Frame-rate independent smoothing
+    const alpha = 1 - Math.exp(-FOLLOW_SPEED * dt);
+
+    x += (targetX - x) * alpha;
+    y += (targetY - y) * alpha;
+
+    document.documentElement.style.setProperty("--mouse-x", `${x}px`);
+    document.documentElement.style.setProperty("--mouse-y", `${y}px`);
+
+    raf = requestAnimationFrame(animate);
+  };
+
+  const handleMouseMove = (e: MouseEvent) => {
+    targetX = e.clientX;
+    targetY = e.clientY;
+  };
+
+  window.addEventListener("mousemove", handleMouseMove, { passive: true });
+  raf = requestAnimationFrame(animate);
+
+  return () => {
+    window.removeEventListener("mousemove", handleMouseMove);
+    cancelAnimationFrame(raf);
+  };
+}, []);
   return (
     <div className="flex flex-col md:flex-row min-h-screen bg-page-bg">
       <div
-        className="pointer-events-none fixed inset-0 z-30 transition duration-300"
+        className="pointer-events-none fixed inset-0 z-30"
         style={{
           background:
-            "radial-gradient(600px at var(--mouse-x) var(--mouse-y), rgba(29, 78, 216, 0.10), transparent 80%)",
-            mixBlendMode:'screen'
+            "radial-gradient(700px at var(--mouse-x) var(--mouse-y), rgba(29, 78, 216, 0.4), transparent 60%)",
+          filter: "blur(30px)",
+          mixBlendMode: "screen",
+        }}
+      />
+      <div
+        className="pointer-events-none fixed inset-0 z-30"
+        style={{
+          background:
+            "radial-gradient(250px at var(--mouse-x) var(--mouse-y), rgba(96,165,250,.22), transparent 30%)",
+          filter: "blur(30px)",
+          mixBlendMode: "screen",
         }}
       />
       <aside className="w-full md:w-2/5 md:h-screen md:sticky md:top-0 p-5 sm:p-10 mx-auto">
