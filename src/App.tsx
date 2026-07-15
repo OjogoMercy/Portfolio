@@ -2,23 +2,18 @@ import "./App.css";
 import { Mail, Phone } from "lucide-react";
 import { FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa";
 function App() {
-  const image = "/src/assets/profile.png";
   return (
     <div className="flex  flex-col md:flex-row min-h-screen bg-page-bg">
-      <aside className="w-full md:w-2/5 md:h-screen md:sticky md:top-0 p-6 sm:p-10 ml-5">
-        <img
-          src={image}
-          className="w-24 h-24 sm:w-32 sm:h-32 md:w-48 md:h-48 lg:w-70 lg:h-70 object-cover rounded-full mt-6 md:mt-15"
-        />
-        <h1 className="text-2xl sm:text-3xl md:text-4xl text-text-primary font-bold mt-5 mb-5">
+      <aside className="w-full md:w-2/5 md:h-screen md:sticky md:top-0 p-5 sm:p-10 ml-5">
+        <h1 className="text-4xl sm:text-3xl md:text-4xl text-text-primary font-bold mt-5 mb-5">
           Ojogo Mercy
         </h1>
-        <h2 className="text-text-secondary text-sm sm:text-base mt-3 mb-3">
+        <h2 className="text-text-secondary text-2xl sm:text-base mt-3 mb-3">
           Mobile and Frontend Engineer
         </h2>
         <h2 className="text-text-secondary text-sm sm:text-base">
-          I help founders and startups launch investor-ready websites and mobile
-          applications fast and without execution friction
+          Building products that start with better questions, not just better
+          code.
         </h2>
 
         <div className="flex gap-5 mt-8">
@@ -51,13 +46,58 @@ function App() {
           </a>
         </div>
       </aside>
+      <main className="w-full md:w-2/5 p-6 sm:p-10 ml-15 text-text-secondary text-sm sm:text-base leading-relaxed">
+        <section id="summary" className="mt-10 sm:mb-24">
+          <h3 className=" text-text-secondary mb-4">
+            Good software isn't just built with code. It's built through
+            hundreds of thoughtful decisions about users, trade-offs, and
+            long-term maintainability.
+          </h3>
+          <h3 className="text-text-secondary mb-4">
+            As a{" "}
+            <strong className="font-bold text-text-primary">
+              mobile engineer
+            </strong>{" "}
+            currently building{" "}
+            <strong className="font-bold text-text-primary">HealthCard</strong>,
+            a maternal and child healthcare app, that belief shapes how I
+            approach every decision, from designing user experiences to making
+            architectural choices. My goal is always the same: understand the
+            problem deeply enough that the solution feels obvious rather than
+            clever.
+          </h3>
+          <h3 className="text-text-secondary mb-4">
+            I believe better software starts with better questions. The
+            questions behind a product interest me more than the features
+            themselves because I believe the hardest part of building software
+            usually isn't writing the code, it's understanding the problem well
+            enough to know what should be built in the first place.
+          </h3>
 
-      <div className="ticks"></div>
+          <h3 className="text-text-secondary">
+            If you're building products that value thoughtful engineering and
+            product thinking, I'd love to connect.
+          </h3>
+        </section>
 
-      <section id="next-steps"></section>
+        <section id="experience" className="mb-16 sm:mb-24">
+          <h2 className="text-xl sm:text-2xl text-text-primary font-bold mb-4">
+            Experience
+          </h2>
+          {/* experience items */}
+        </section>
 
-      <div className="ticks"></div>
-      <section id="spacer"></section>
+        <section id="projects" className="mb-16 sm:mb-24">
+          <h2 className="text-xl sm:text-2xl text-text-primary font-bold mb-4">
+            Projects
+          </h2>
+          {/* project cards */}
+        </section>
+
+        <footer className="text-text-secondary text-sm pt-8 border-t border-border">
+          {/* footer content */}
+        </footer>
+      </main>
     </div>
   );
 }
