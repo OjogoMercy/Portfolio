@@ -1,17 +1,11 @@
 @import "tailwindcss";
 
 @theme {
-  /* Backgrounds */
-  --color-page-bg: #0B1120; /* page background */
-  --color-sidebar-bg: #131B2E; /* sidebar / card background */
-
-  /* Accent */
-  --color-accent: #2F80ED; /* coral */
-  --color-accent-dark: #381208; /* text on coral fills */
-
-  /* Text */
-  --color-text-primary: #E8EDF5;
-  --color-text-secondary: #A8B5C7; /* muted */
-  --color-border: #263248;
- --color-hover:#0C8575
+  --color-page-bg: #020617; /* very deep navy */
+  --color-sidebar-bg: #0f172a;
+  --color-text-primary: #f9fafb;
+  --color-text-secondary: #9ca3af;
+  --color-accent: #06b6d4; /* cyan */
+  --color-hover: #22d3ee;
+  --color-border: #1e293b;
 }
