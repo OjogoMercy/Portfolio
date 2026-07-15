@@ -17,7 +17,7 @@ function App() {
     let raf: number;
     let last = performance.now();
 
-    const FOLLOW_SPEED = 3; // Lower = more trailing (try 2–4)
+    const FOLLOW_SPEED = 2; 
 
     const animate = (now: number) => {
       const dt = (now - last) / 1000;

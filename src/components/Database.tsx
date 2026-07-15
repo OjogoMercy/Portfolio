@@ -21,7 +21,7 @@ export const experience: ExperienceItem[] = [
     id: "1",
     company: "Ransact",
     role: "Frontend Mobile Developer",
-    logo: "/src/assets/ransact.png",
+    logo: "/ransact.png",
     highlights: [
       "Developed a cross-platform fintech application using React Native, Expo Router, and TypeScript.",
       "Built a multi-step KYC onboarding flow with identity, document, facial, and address verification.",
@@ -41,7 +41,7 @@ export const experience: ExperienceItem[] = [
     id: "2",
     company: "Cephas ICT Hub",
     role: "Mobile Application Developer",
-    logo: "/src/assets/Cephas.jpg",
+    logo: "/Cephas.jpg",
     highlights: [
       "Developed mobile applications using React Native, Expo, AsyncStorage, Redux Toolkit, and Zustand",
       "Drove a 16% improvement in usability metrics through independent design refinements and interface optimization",
@@ -59,11 +59,11 @@ export const experience: ExperienceItem[] = [
     id: "3",
     company: "CowryWise",
     role: "Campus Ambassador",
-    logo: "/src/assets/cowry.webp",
+    logo: "/cowry.webp",
     highlights: [
       "Served as a tech advocate, promoting digital financial tools and onboarding users through peer-led sessions",
       "Organized community events focused on financial literacy, increasing platform adoption within the campus community",
-      "Strengthened public speaking and cross-functional communication skills",
+      "Strengthened speaking and cross-functional communication skills",
     ],
     tags: ["Community Advocacy", "Financial Literacy", " Onboarding"],
   },
@@ -73,7 +73,7 @@ export const Projects: ProjectItem[] = [
   {
     id: "1",
     company: "HealthCard (In Progress)",
-    logo: "/src/assets/unnamed-tile.jpg",
+    logo: "/unnamed-tile.jpg",
     link: "https://github.com/OjogoMercy/HealthCard",
     highlights: [
       "Addressed the difficulty families face tracking immunization schedules and growth milestones by building a full-stack maternal and child health platform with authentication, profile management, and progress tracking built in.",
@@ -94,7 +94,7 @@ export const Projects: ProjectItem[] = [
   {
     id: "2",
     company: "ScanMe",
-    logo: "/src/assets/scanme.jpg",
+    logo: "/scanme.jpg",
     link: "https://github.com/OjogoMercy/ScanMeV2",
     highlights: [
       "Addressed the need for a reliable, offline-friendly QR scanning tool by building a utility app that goes beyond basic scanning into smart organization and accessibility.",
@@ -112,7 +112,7 @@ export const Projects: ProjectItem[] = [
   {
     id: "3",
     company: "Paylinc(Winner, Green Advocates Competition LAUTECH)",
-    logo: "/src/assets/paylinc.PNG",
+    logo: "/paylinc.PNG",
     highlights: [
       "Solving the friction and leakage of cash-based fare collection on university transport by building a QR-based digital wallet system that lets students pay instantly without carrying cash.",
       "The system handles wallet balances, QR scan-to-pay, and a flat per-transaction fee model built entirely from scratch in React Native, resulting in faster boarding, transparent transaction records, and a scalable payments model — earning recognition through the Green Advocates competition and entry into the OPay & Google National Innovation Challenge 2026.",
@@ -129,7 +129,7 @@ export const Projects: ProjectItem[] = [
   {
     id: "4",
     company: "AKAMS Solar",
-    logo: "/src/assets/akams.PNG",
+    logo: "/akams.PNG",
     link: "https://akams-solar.vercel.app/",
     highlights: [
       "Addressed a solar energy client's need for a fast, professional web presence by building and deploying a marketing website from the ground up.",
