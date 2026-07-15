@@ -2,15 +2,16 @@
 
 @theme {
   /* Backgrounds */
-  --color-page-bg: #0b1120; /* page background */
-  --color-sidebar-bg: #131b2e; /* sidebar / card background */
+  --color-page-bg: #0B1120; /* page background */
+  --color-sidebar-bg: #131B2E; /* sidebar / card background */
 
   /* Accent */
-  --color-accent: #f0755a; /* coral */
-  --color-accent-dark: #4a1b0c; /* text on coral fills */
+  --color-accent: #2F80ED; /* coral */
+  --color-accent-dark: #381208; /* text on coral fills */
 
   /* Text */
-  --color-text-primary: #e5e9f0;
-  --color-text-secondary: #94a3b8; /* muted */
-  --color-border: #1f2a40;
+  --color-text-primary: #E8EDF5;
+  --color-text-secondary: #A8B5C7; /* muted */
+  --color-border: #263248;
+ --color-hover:#0C8575
 }
