@@ -4,6 +4,7 @@ import { FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa";
 import { experience, Projects } from "./components/Database";
 import ExperienceCard from "./components/ExperienceCard";
 import ProjectCard from "./components/ProjectCard";
+import SideNav from "./components/SideNav";
 function App() {
   return (
     <div className="flex  flex-col md:flex-row min-h-screen bg-page-bg">
@@ -11,13 +12,16 @@ function App() {
         <h1 className="text-4xl sm:text-3xl md:text-4xl text-text-primary font-bold mt-5 mb-5">
           Ojogo Mercy
         </h1>
-        <h2 className="text-text-secondary text-2xl sm:text-base mt-3 mb-3">
+        <h2 className="text-text-primary text-2xl sm:text-base mt-3 mb-3">
           Mobile and Frontend Engineer
         </h2>
-        <h2 className="text-text-secondary text-sm sm:text-base">
+        <h2 className="text-text-muted text-sm sm:text-base">
           Building products that start with better questions, not just better
           code.
         </h2>
+        <div className="mt-20">
+          <SideNav />
+        </div>
 
         <div className="flex gap-5 mt-8">
           <a
@@ -50,7 +54,7 @@ function App() {
         </div>
       </aside>
       <main className="w-full md:w-2/4 p-6 sm:p-10 mx-auto text-text-secondary text-sm sm:text-base  leading-relaxed ">
-        <section id="summary" className="mt-10 sm:mb-24">
+        <section id="about" className="mt-10 sm:mb-24">
           <h3 className=" text-text-secondary mb-4">
             Good software isn't just built with code. It's built through
             hundreds of thoughtful decisions about users, trade-offs, and
