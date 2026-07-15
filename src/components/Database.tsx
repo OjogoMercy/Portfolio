@@ -23,11 +23,11 @@ export const experience: ExperienceItem[] = [
     role: "Frontend Mobile Developer",
     logo: "/src/assets/ransact.png",
     highlights: [
-      "Built a cross-platform fintech application for bank transfers and cryptocurrency transactions using React Native, Expo Router, and TypeScript",
-      "Implemented a multi-step KYC (Know Your Customer) flow including identity verification, document capture, face scan, and address verification with camera and image picker integration",
-      "Engineered a QR code scanner with and wallet address validation for seamless crypto transactions",
-      "Migrated global state management from Zustand to Redux Toolkit, improving scalability and maintainability across the application",
-      "Developed reusable hooks and UI components including a custom loading state system wired to real component lifecycle events",
+      "Developed a cross-platform fintech application using React Native, Expo Router, and TypeScript.",
+      "Built a multi-step KYC onboarding flow with identity, document, facial, and address verification.",
+      "Integrated native camera and image picker functionality for secure identity verification.",
+      "Migrated application state management from Zustand to Redux Toolkit.",
+      "Integrated REST APIs for authentication, KYC, and wallet management",
     ],
     tags: [
       "React Native",
