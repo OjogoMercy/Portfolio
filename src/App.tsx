@@ -1,10 +1,12 @@
 import "./App.css";
 import { Mail, Phone } from "lucide-react";
 import { FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa";
+import { experience } from "./components/Database";
+import ExperienceCard from "./components/ExperienceCard";
 function App() {
   return (
     <div className="flex  flex-col md:flex-row min-h-screen bg-page-bg">
-      <aside className="w-full md:w-2/5 md:h-screen md:sticky md:top-0 p-5 sm:p-10 ml-5">
+      <aside className="w-full md:w-2/5 md:h-screen md:sticky md:top-0 p-5 sm:p-10 mx-auto">
         <h1 className="text-4xl sm:text-3xl md:text-4xl text-text-primary font-bold mt-5 mb-5">
           Ojogo Mercy
         </h1>
@@ -46,7 +48,7 @@ function App() {
           </a>
         </div>
       </aside>
-      <main className="w-full md:w-2/5 p-6 sm:p-10 ml-15 text-text-secondary text-sm sm:text-base leading-relaxed">
+      <main className="w-full md:w-2/4 p-6 sm:p-10 mx-auto text-text-secondary text-sm sm:text-base  leading-relaxed ">
         <section id="summary" className="mt-10 sm:mb-24">
           <h3 className=" text-text-secondary mb-4">
             Good software isn't just built with code. It's built through
@@ -80,11 +82,11 @@ function App() {
           </h3>
         </section>
 
-        <section id="experience" className="mb-16 sm:mb-24">
-          <h2 className="text-xl sm:text-2xl text-text-primary font-bold mb-4">
-            Experience
-          </h2>
-          {/* experience items */}
+        <section id="experience" className="mt-15 sm:mt-20 ">
+          <h2 className="text-text-primary font-bold text-2xl">Experience</h2>
+          {experience.map((item) => (
+            <ExperienceCard item={item} key={item.id} />
+          ))}
         </section>
 
         <section id="projects" className="mb-16 sm:mb-24">

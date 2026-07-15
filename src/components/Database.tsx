@@ -1,7 +1,7 @@
 export interface ExperienceItem {
   id: string;
   company: string;
-  role: string;
+  role?: string;
   logo: string;
   highlights: string[];
   tags: string[];
@@ -60,3 +60,48 @@ export const experience: ExperienceItem[] = [
   },
 ];
 
+export const Projects: ExperienceItem[] = [
+  {
+    id: "1",
+    company: "HealthCard (In Progress)",
+    logo: "/src/assets/ransact.png",
+    highlights: [
+      "Building and deploying a maternal and child health platform with authentication, profile management, immunization tracking, and growth monitoring",
+      "Designed a modular backend (routes/controller/service architecture) using Express, TypeScript, and Prisma",
+      "Implemented JWT-based session handling with centralized token-expiry recovery",
+      "Deployed the API live on Render, with core flows covered by automated tests using Jest and Supertest",
+    ],
+    tags: [
+      "React Native",
+      "Expo Router",
+      "TypeScript",
+      "Redux Toolkit",
+      " Node.js ",
+      "Express",
+      " Prisma",
+      " PostgreSQL",
+      " Jest",
+    ],
+  },
+    {
+    id: "2",
+    company: "ScanMe",
+    logo: "/src/assets/ransact.png",
+    highlights: [
+      "Built a QR code scanner with smart tagging, haptic feedback, and flashlight support",
+"Implemented local history storage and state management using Zustand",
+"Added filtering by type/date and deletion controls"
+    ],
+    tags: [
+      "React Native",
+      "Expo Router",
+      "TypeScript",
+      "Redux Toolkit",
+      " Node.js ",
+      "Express",
+      " Prisma",
+      " PostgreSQL",
+      " Jest",
+    ],
+  },
+];
