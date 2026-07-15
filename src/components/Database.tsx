@@ -73,7 +73,7 @@ export const Projects: ProjectItem[] = [
   {
     id: "1",
     company: "HealthCard (In Progress)",
-    logo: "/src/assets/ransact.png",
+    logo: "/src/assets/unnamed-tile.jpg",
     link: "https://github.com/OjogoMercy/HealthCard",
     highlights: [
       "Addressed the difficulty families face tracking immunization schedules and growth milestones by building a full-stack maternal and child health platform with authentication, profile management, and progress tracking built in.",
@@ -94,7 +94,7 @@ export const Projects: ProjectItem[] = [
   {
     id: "2",
     company: "ScanMe",
-    logo: "/src/assets/ransact.png",
+    logo: "/src/assets/scanme.jpg",
     link: "https://github.com/OjogoMercy/ScanMeV2",
     highlights: [
       "Addressed the need for a reliable, offline-friendly QR scanning tool by building a utility app that goes beyond basic scanning into smart organization and accessibility.",
@@ -112,7 +112,7 @@ export const Projects: ProjectItem[] = [
   {
     id: "3",
     company: "Paylinc(Winner, Green Advocates Competition LAUTECH)",
-    logo: "/src/assets/ransact.png",
+    logo: "/src/assets/paylinc.PNG",
     highlights: [
       "Solving the friction and leakage of cash-based fare collection on university transport by building a QR-based digital wallet system that lets students pay instantly without carrying cash.",
       "The system handles wallet balances, QR scan-to-pay, and a flat per-transaction fee model built entirely from scratch in React Native, resulting in faster boarding, transparent transaction records, and a scalable payments model — earning recognition through the Green Advocates competition and entry into the OPay & Google National Innovation Challenge 2026.",

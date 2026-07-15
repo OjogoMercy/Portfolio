@@ -1,7 +1,7 @@
 import "./App.css";
 import { Mail, Phone } from "lucide-react";
 import { FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa";
-import { experience,Projects } from "./components/Database";
+import { experience, Projects } from "./components/Database";
 import ExperienceCard from "./components/ExperienceCard";
 import ProjectCard from "./components/ProjectCard";
 function App() {
@@ -21,30 +21,30 @@ function App() {
 
         <div className="flex gap-5 mt-8">
           <a
-            href="https://github.com/yourusername"
+            href="https://github.com/OjogoMercy"
             target="_blank"
             rel="noopener noreferrer"
           >
             <FaGithub className="w-5 h-5 text-text-secondary hover:text-accent transition-colors" />
           </a>
           <a
-            href="https://linkedin.com/in/yourusername"
+            href="www.linkedin.com/in/mercyojogo"
             target="_blank"
             rel="noopener noreferrer"
           >
             <FaLinkedin className="w-5 h-5 text-text-secondary hover:text-accent transition-colors" />
           </a>
           <a
-            href="https://x.com/yourusername"
+            href="https://x.com/NotJust_Code"
             target="_blank"
             rel="noopener noreferrer"
           >
             <FaTwitter className="w-5 h-5 text-text-secondary hover:text-accent transition-colors" />
           </a>
-          <a href="mailto:you@email.com">
+          <a href="www.linkedin.com/in/mercyojogo">
             <Mail className="w-5 h-5 text-text-secondary hover:text-accent transition-colors" />
           </a>
-          <a href="tel:+234...">
+          <a href="tel:+2347042295235">
             <Phone className="w-5 h-5 text-text-secondary hover:text-accent transition-colors" />
           </a>
         </div>
@@ -91,14 +91,10 @@ function App() {
         </section>
 
         <section id="projects" className="mt-15 sm:mt-20">
-                   <h2 className="text-text-primary font-bold text-2xl">
-            Projects
-          </h2>
-          {
-          Projects.map((item)=>(
-            <ProjectCard item={item} key={item.id}/>
-          ))
-          }
+          <h2 className="text-text-primary font-bold text-2xl">Projects</h2>
+          {Projects.map((item) => (
+            <ProjectCard item={item} key={item.id} />
+          ))}
         </section>
 
         <footer className="text-text-secondary text-sm pt-8 border-t border-border">
