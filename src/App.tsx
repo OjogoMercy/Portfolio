@@ -70,7 +70,7 @@ function App() {
       />
       <aside className="w-full md:w-2/5 mt-3 md:h-screen md:sticky md:top-5 p-5 sm:p-10 mx-auto">
         <h1 className="text-5xl sm:text-6xl md:text-5xl lg:text-5xl text-text-primary font-bold mt-3 mb-5 tracking-tight">
-          Ojogo Mercy
+           Mercy Ojogo
         </h1>
         <h2 className="text-text-primary text-xl sm:text-lg md:text-lg mt-3 mb-3 ">
           Mobile and Frontend Engineer
@@ -127,7 +127,7 @@ function App() {
               mobile engineer
             </strong>{" "}
             currently building{" "}
-            <strong className="font-bold text-text-primary">HealthCard</strong>,
+            <strong className="font-bold text-text-primary">Ojiva</strong>,
             a maternal and child healthcare app, that belief shapes how I
             approach every decision, from designing user experiences to making
             architectural choices. My goal is always the same: understand the

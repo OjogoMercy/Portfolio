@@ -72,7 +72,7 @@ export const experience: ExperienceItem[] = [
 export const Projects: ProjectItem[] = [
   {
     id: "1",
-    company: "HealthCard (In Progress)",
+    company: "Ojiva (In Progress)",
     logo: "/unnamed-tile.jpg",
     link: "https://github.com/OjogoMercy/HealthCard",
     highlights: [
