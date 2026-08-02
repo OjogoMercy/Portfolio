@@ -7,7 +7,7 @@ const navItems = [
   {
     label: "RESUME",
     id: "resume",
-    href: "https://drive.google.com/file/d/1qBH7Mi7MJWxKIc2gYP5_fSnm07VSaYMz/view?usp=drive_link",
+    href: "https://drive.google.com/file/d/1OPn-Ew4F8X6JnpverHunP2daEI2_9bv3/view?usp=drive_link",
   },
 ];
 
