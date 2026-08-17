@@ -130,7 +130,7 @@ export const Projects: ProjectItem[] = [
     id: "4",
     company: "AKAMS Solar",
     logo: "/akams.PNG",
-    link: "https://akams-solar.vercel.app/",
+    link: "https://www.akams-solar.com/",
     highlights: [
       "Addressed a solar energy client's need for a fast, professional web presence by building and deploying a marketing website from the ground up.",
       "The site was built optimized for performance, resulting in strong Lighthouse scores across the board and a smooth, production-ready deployment.",
