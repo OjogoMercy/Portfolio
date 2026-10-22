@@ -8,7 +8,8 @@ import SideNav from "./components/SideNav";
 import { useEffect, useRef } from "react";
 
 function App() {
-  const glowRef = useRef<HTMLDivElement>(null);
+  const glowWideRef = useRef<HTMLDivElement>(null);
+  const glowCoreRef = useRef<HTMLDivElement>(null);
 
   // Cursor glow: only runs on devices with a real mouse, respects reduced motion,
   // and stops animating once the glow catches up with the cursor.
@@ -80,17 +81,28 @@ function App() {
         Skip to content
       </a>
 
-      {/* One glow layer instead of two, and no CSS blur filter (the gradients are already soft) */}
-      <div
-        ref={glowRef}
-        aria-hidden="true"
-        className="pointer-events-none fixed inset-0 z-30"
-        style={{
-          background:
-            "radial-gradient(250px at var(--mouse-x) var(--mouse-y), rgba(96,165,250,.22), transparent 30%), radial-gradient(700px at var(--mouse-x) var(--mouse-y), rgba(29, 78, 216, 0.4), transparent 60%)",
-          mixBlendMode: "screen",
-        }}
-      />
+      {/* Two glow layers. The wrapper uses `contents` so it creates no stacking context
+          (mix-blend-mode still blends with the page) and just passes the CSS variables down. */}
+      <div ref={glowRef} aria-hidden="true" className="contents">
+        <div
+          className="pointer-events-none fixed inset-0 z-30"
+          style={{
+            background:
+              "radial-gradient(700px at var(--mouse-x) var(--mouse-y), rgba(29, 78, 216, 0.4), transparent 60%)",
+            filter: "blur(30px)",
+            mixBlendMode: "screen",
+          }}
+        />
+        <div
+          className="pointer-events-none fixed inset-0 z-30"
+          style={{
+            background:
+              "radial-gradient(250px at var(--mouse-x) var(--mouse-y), rgba(96,165,250,.22), transparent 30%)",
+            filter: "blur(30px)",
+            mixBlendMode: "screen",
+          }}
+        />
+      </div>
 
       <header className="w-full md:w-2/5 mt-3 md:h-screen md:sticky md:top-5 p-5 sm:p-10 mx-auto">
         <h1 className="text-5xl sm:text-6xl md:text-5xl lg:text-5xl text-text-primary font-bold mt-3 mb-5 tracking-tight">
