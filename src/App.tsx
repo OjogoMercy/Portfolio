@@ -8,69 +8,73 @@ import SideNav from "./components/SideNav";
 import { useEffect, useRef } from "react";
 
 function App() {
-  const glowWideRef = useRef<HTMLDivElement>(null);
-  const glowCoreRef = useRef<HTMLDivElement>(null);
+const glowWideRef = useRef<HTMLDivElement>(null);
+const glowCoreRef = useRef<HTMLDivElement>(null);
 
-  // Cursor glow: only runs on devices with a real mouse, respects reduced motion,
-  // and stops animating once the glow catches up with the cursor.
-  useEffect(() => {
-    const el = glowRef.current;
-    if (!el) return;
+useEffect(() => {
+  const wide = glowWideRef.current;
+  const core = glowCoreRef.current;
+  if (!wide || !core) return;
+  const els = [wide, core];
 
-    const hasMouse = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
-    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (!hasMouse || reduceMotion) {
-      el.style.display = "none";
-      return;
-    }
+  const hasMouse = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (!hasMouse || reduceMotion) {
+    els.forEach((el) => (el.style.display = "none"));
+    return;
+  }
 
-    let x = window.innerWidth / 2;
-    let y = window.innerHeight / 2;
-    let targetX = x;
-    let targetY = y;
-    let raf = 0;
-    let last = performance.now();
+  let x = window.innerWidth / 2;
+  let y = window.innerHeight / 2;
+  let targetX = x;
+  let targetY = y;
+  let raf = 0;
+  let last = performance.now();
 
-    const FOLLOW_SPEED = 6;
+  const FOLLOW_SPEED = 6;
 
-    el.style.setProperty("--mouse-x", `${x}px`);
-    el.style.setProperty("--mouse-y", `${y}px`);
-
-    const animate = (now: number) => {
-      const dt = Math.min((now - last) / 1000, 0.05);
-      last = now;
-
-      // Frame-rate independent smoothing
-      const alpha = 1 - Math.exp(-FOLLOW_SPEED * dt);
-      x += (targetX - x) * alpha;
-      y += (targetY - y) * alpha;
-
+  const setPos = () => {
+    els.forEach((el) => {
       el.style.setProperty("--mouse-x", `${x}px`);
       el.style.setProperty("--mouse-y", `${y}px`);
+    });
+  };
 
-      if (Math.abs(targetX - x) > 0.5 || Math.abs(targetY - y) > 0.5) {
-        raf = requestAnimationFrame(animate);
-      } else {
-        raf = 0; // settled, stop until the mouse moves again
-      }
-    };
+  setPos();
 
-    const handleMouseMove = (e: MouseEvent) => {
-      targetX = e.clientX;
-      targetY = e.clientY;
-      if (!raf) {
-        last = performance.now();
-        raf = requestAnimationFrame(animate);
-      }
-    };
+  const animate = (now: number) => {
+    const dt = Math.min((now - last) / 1000, 0.05);
+    last = now;
 
-    window.addEventListener("mousemove", handleMouseMove, { passive: true });
+    const alpha = 1 - Math.exp(-FOLLOW_SPEED * dt);
+    x += (targetX - x) * alpha;
+    y += (targetY - y) * alpha;
 
-    return () => {
-      window.removeEventListener("mousemove", handleMouseMove);
-      if (raf) cancelAnimationFrame(raf);
-    };
-  }, []);
+    setPos();
+
+    if (Math.abs(targetX - x) > 0.5 || Math.abs(targetY - y) > 0.5) {
+      raf = requestAnimationFrame(animate);
+    } else {
+      raf = 0;
+    }
+  };
+
+  const handleMouseMove = (e: MouseEvent) => {
+    targetX = e.clientX;
+    targetY = e.clientY;
+    if (!raf) {
+      last = performance.now();
+      raf = requestAnimationFrame(animate);
+    }
+  };
+
+  window.addEventListener("mousemove", handleMouseMove, { passive: true });
+
+  return () => {
+    window.removeEventListener("mousemove", handleMouseMove);
+    if (raf) cancelAnimationFrame(raf);
+  };
+}, []);
 
   return (
     <div className="flex flex-col md:flex-row min-h-screen bg-page-bg">
