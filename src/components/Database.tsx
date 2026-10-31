@@ -73,7 +73,7 @@ export const Projects: ProjectItem[] = [
   {
     id: "0",
     company: "TrustVax",
-    logo: "/trustvax.png",
+    logo: "/trustvax.PNG",
     link: "https://trustvax-phi.vercel.app/",
     highlights: [
       "TrustVax (Pima Health Hackathon, 1st Place) I came up with the idea, built the parent-facing side, and pitched for my team. We had 2 hours to build, and our first presentation failed because the judges couldn’t hear us. We got a second chance with 4 minutes to pitch and walk through the demo and won first place.",
