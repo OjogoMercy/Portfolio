@@ -8,73 +8,77 @@ import SideNav from "./components/SideNav";
 import { useEffect, useRef } from "react";
 
 function App() {
-const glowWideRef = useRef<HTMLDivElement>(null);
-const glowCoreRef = useRef<HTMLDivElement>(null);
+  const glowWideRef = useRef<HTMLDivElement>(null);
+  const glowCoreRef = useRef<HTMLDivElement>(null);
 
-useEffect(() => {
-  const wide = glowWideRef.current;
-  const core = glowCoreRef.current;
-  if (!wide || !core) return;
-  const els = [wide, core];
+  useEffect(() => {
+    const wide = glowWideRef.current;
+    const core = glowCoreRef.current;
+    if (!wide || !core) return;
+    const els = [wide, core];
 
-  const hasMouse = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
-  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  if (!hasMouse || reduceMotion) {
-    els.forEach((el) => (el.style.display = "none"));
-    return;
-  }
+    const hasMouse = window.matchMedia(
+      "(hover: hover) and (pointer: fine)",
+    ).matches;
+    const reduceMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
+    if (!hasMouse || reduceMotion) {
+      els.forEach((el) => (el.style.display = "none"));
+      return;
+    }
 
-  let x = window.innerWidth / 2;
-  let y = window.innerHeight / 2;
-  let targetX = x;
-  let targetY = y;
-  let raf = 0;
-  let last = performance.now();
+    let x = window.innerWidth / 2;
+    let y = window.innerHeight / 2;
+    let targetX = x;
+    let targetY = y;
+    let raf = 0;
+    let last = performance.now();
 
-  const FOLLOW_SPEED = 6;
+    const FOLLOW_SPEED = 6;
 
-  const setPos = () => {
-    els.forEach((el) => {
-      el.style.setProperty("--mouse-x", `${x}px`);
-      el.style.setProperty("--mouse-y", `${y}px`);
-    });
-  };
-
-  setPos();
-
-  const animate = (now: number) => {
-    const dt = Math.min((now - last) / 1000, 0.05);
-    last = now;
-
-    const alpha = 1 - Math.exp(-FOLLOW_SPEED * dt);
-    x += (targetX - x) * alpha;
-    y += (targetY - y) * alpha;
+    const setPos = () => {
+      els.forEach((el) => {
+        el.style.setProperty("--mouse-x", `${x}px`);
+        el.style.setProperty("--mouse-y", `${y}px`);
+      });
+    };
 
     setPos();
 
-    if (Math.abs(targetX - x) > 0.5 || Math.abs(targetY - y) > 0.5) {
-      raf = requestAnimationFrame(animate);
-    } else {
-      raf = 0;
-    }
-  };
+    const animate = (now: number) => {
+      const dt = Math.min((now - last) / 1000, 0.05);
+      last = now;
 
-  const handleMouseMove = (e: MouseEvent) => {
-    targetX = e.clientX;
-    targetY = e.clientY;
-    if (!raf) {
-      last = performance.now();
-      raf = requestAnimationFrame(animate);
-    }
-  };
+      const alpha = 1 - Math.exp(-FOLLOW_SPEED * dt);
+      x += (targetX - x) * alpha;
+      y += (targetY - y) * alpha;
 
-  window.addEventListener("mousemove", handleMouseMove, { passive: true });
+      setPos();
 
-  return () => {
-    window.removeEventListener("mousemove", handleMouseMove);
-    if (raf) cancelAnimationFrame(raf);
-  };
-}, []);
+      if (Math.abs(targetX - x) > 0.5 || Math.abs(targetY - y) > 0.5) {
+        raf = requestAnimationFrame(animate);
+      } else {
+        raf = 0;
+      }
+    };
+
+    const handleMouseMove = (e: MouseEvent) => {
+      targetX = e.clientX;
+      targetY = e.clientY;
+      if (!raf) {
+        last = performance.now();
+        raf = requestAnimationFrame(animate);
+      }
+    };
+
+    window.addEventListener("mousemove", handleMouseMove, { passive: true });
+
+    return () => {
+      window.removeEventListener("mousemove", handleMouseMove);
+      if (raf) cancelAnimationFrame(raf);
+    };
+  }, []);
 
   return (
     <div className="flex flex-col md:flex-row min-h-screen bg-page-bg">
@@ -87,7 +91,7 @@ useEffect(() => {
 
       {/* Two glow layers. The wrapper uses `contents` so it creates no stacking context
           (mix-blend-mode still blends with the page) and just passes the CSS variables down. */}
-      <div ref={glowRef} aria-hidden="true" className="contents">
+      <div ref={glowWideRef} aria-hidden="true" className="contents">
         <div
           className="pointer-events-none fixed inset-0 z-30"
           style={{
@@ -98,6 +102,7 @@ useEffect(() => {
           }}
         />
         <div
+          ref={glowCoreRef}
           className="pointer-events-none fixed inset-0 z-30"
           style={{
             background:
@@ -197,8 +202,8 @@ useEffect(() => {
             </strong>{" "}
             currently building{" "}
             <strong className="font-bold text-text-primary">Ojiva</strong>, a
-            maternal and child healthcare app, that belief shapes how I
-            approach every decision, from designing user experiences to making
+            maternal and child healthcare app, that belief shapes how I approach
+            every decision, from designing user experiences to making
             architectural choices. My goal is always the same: understand the
             problem deeply enough that the solution feels obvious rather than
             clever.
