@@ -1,4 +1,3 @@
-import "./App.css";
 import { Mail, Phone } from "lucide-react";
 import { FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa";
 import { experience, Projects } from "./components/Database";

@@ -5,6 +5,8 @@ export default function ExperienceCard({ item }: { item: ExperienceItem }) {
     <div className="bg-page-bg p-5 mt-5  sm:p-7 hover:bg-sidebar-bg rounded flex flex-row md:flex-row ">
       <img
         src={item.logo}
+        loading="lazy"
+        decoding="async"
         className=" h-20 w-20 rounded-md object-contain shrink-0 mr-5 "
         alt={item.company}
       />
