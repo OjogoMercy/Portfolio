@@ -1,15 +1,61 @@
 @import "tailwindcss";
+@import "@fontsource-variable/bricolage-grotesque";
+@import "@fontsource/caveat/700.css";
 
 @theme {
-  --color-page-bg: #0a1029;
-  --color-sidebar-bg: #11193d;
+  --font-sans: "Bricolage Grotesque Variable", ui-sans-serif, system-ui, sans-serif;
+  /* Handwriting is reserved for annotations on screenshots and the photo caption */
+  --font-hand: "Caveat", "Segoe Print", cursive;
 
-  --color-accent: #5ec8ff;
-  --color-accent-dark: #0b3d5c;
+  --color-paper: #eef3fb;
+  --color-grid: #cfdbee;
+  --color-ink: #14213d;
+  --color-ink-soft: #2c3a5c;
+  --color-ink-muted: #4b5b7c;
+  --color-marker: #ffe14d;
+  --color-pen: #d23a40;
+  --color-sky: #5ec8ff;
+}
 
-  --color-text-primary: #f5f7fa;
-  --color-text-secondary: #a4b1d3;
-  --color-text-muted: #8494b0; /* 5.5:1 on cards, 6.1:1 on page bg (WCAG AA) */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
 
-  --color-border: #31448f;
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+
+  body {
+    background-color: var(--color-paper);
+    background-image:
+      linear-gradient(var(--color-grid) 1px, transparent 1px),
+      linear-gradient(90deg, var(--color-grid) 1px, transparent 1px);
+    background-size: 28px 28px;
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+  }
+
+  ::selection {
+    background: var(--color-marker);
+    color: var(--color-ink);
+  }
+
+  :focus-visible {
+    outline: 3px solid var(--color-ink);
+    outline-offset: 3px;
+  }
+}
+
+/* Marker-pen highlight behind a phrase */
+@utility hl {
+  background-image: linear-gradient(
+    transparent 58%,
+    var(--color-marker) 58%,
+    var(--color-marker) 92%,
+    transparent 92%
+  );
+  padding-inline: 2px;
 }

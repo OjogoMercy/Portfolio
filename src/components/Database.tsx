@@ -1,3 +1,50 @@
+export const RESUME_URL =
+  "https://drive.google.com/file/d/1OPn-Ew4F8X6JnpverHunP2daEI2_9bv3/view?usp=drive_link";
+
+export const projectLinkLabel = (link: string) =>
+  link.includes("github.com") ? "View on GitHub" : "Visit live site";
+
+export interface SkillGroup {
+  label: string;
+  items: string[];
+}
+
+export const skills: SkillGroup[] = [
+  {
+    label: "Mobile",
+    items: [
+      "React Native",
+      "Expo",
+      "Expo Router",
+      "TypeScript",
+      "Redux Toolkit",
+      "Zustand",
+      "AsyncStorage",
+      "expo-camera",
+    ],
+  },
+  {
+    label: "Backend",
+    items: [
+      "Node.js",
+      "Express",
+      "Prisma",
+      "PostgreSQL",
+      "MongoDB",
+      "REST APIs",
+      "JWT authentication",
+    ],
+  },
+  {
+    label: "Web",
+    items: ["Next.js", "JavaScript", "HTML", "Tailwind"],
+  },
+  {
+    label: "Testing and delivery",
+    items: ["Jest", "TestFlight", "Render", "Vercel", "Performance optimization"],
+  },
+];
+
 export interface ExperienceItem {
   id: string;
   company: string;
@@ -7,13 +54,24 @@ export interface ExperienceItem {
   tags: string[];
 }
 
+export interface ProjectScreen {
+  src: string;
+  alt: string;
+  caption: string;
+  note: string;
+}
+
 export interface ProjectItem {
   id: string;
   company: string;
+  award?: string;
+  badge?: string;
   logo: string;
+  fit?: "cover" | "contain";
   highlights: string[];
   tags: string[];
   link?: string;
+  screens?: ProjectScreen[];
 }
 
 export const experience: ExperienceItem[] = [
@@ -65,7 +123,7 @@ export const experience: ExperienceItem[] = [
       "Organized community events focused on financial literacy, increasing platform adoption within the campus community",
       "Strengthened speaking and cross-functional communication skills",
     ],
-    tags: ["Community Advocacy", "Financial Literacy", " Onboarding"],
+    tags: ["Community Advocacy", "Financial Literacy", "Onboarding"],
   },
 ];
 
@@ -73,16 +131,18 @@ export const Projects: ProjectItem[] = [
   {
     id: "0",
     company: "TrustVax",
+    award: "Pima Health Hackathon",
+    badge: "1st place",
     logo: "/trustvax.PNG",
     link: "https://trustvax-phi.vercel.app/",
     highlights: [
-      "TrustVax (Pima Health Hackathon, 1st Place) I came up with the idea, built the parent-facing side, and pitched for my team. We had 2 hours to build, and our first presentation failed because the judges couldn’t hear us. We got a second chance with 4 minutes to pitch and walk through the demo and won first place.",
+      "I came up with the idea, built the parent-facing side, and pitched for my team. We had 2 hours to build, and our first presentation failed because the judges couldn’t hear us. We got a second chance with 4 minutes to pitch and walk through the demo and won first place.",
     ],
     tags: [
       "Tailwind",
       "Vercel",
       "Performance Optimization",
-      "javaScript",
+      "JavaScript",
       "MongoDB",
       "Next.js",
     ],
@@ -90,7 +150,8 @@ export const Projects: ProjectItem[] = [
   {
     id: "1",
     company: "Ojiva",
-    logo: "/unnamed-tile.jpg",
+    logo: "/OjivaHomescreen.jpg",
+    fit: "cover",
     link: "https://github.com/OjogoMercy/HealthCard",
     highlights: [
       "Addressed the difficulty families face tracking immunization schedules and growth milestones by building a full-stack maternal and child health platform with authentication, profile management, and progress tracking built in.",
@@ -101,17 +162,32 @@ export const Projects: ProjectItem[] = [
       "Expo Router",
       "TypeScript",
       "Redux Toolkit",
-      " Node.js ",
+      "Node.js",
       "Express",
-      " Prisma",
-      " PostgreSQL",
-      " Jest",
+      "Prisma",
+      "PostgreSQL",
+      "Jest",
+    ],
+    screens: [
+      {
+        src: "/OjivaHomescreen.jpg",
+        alt: "Ojiva home screen with the next immunisation, vaccination progress and each vaccine's status",
+        caption: "Home",
+        note: "Next immunisation and progress at a glance",
+      },
+      {
+        src: "/OjivaModal.jpg",
+        alt: "Ojiva profile screen with a logout confirmation modal over it",
+        caption: "Confirmation modal",
+        note: "Confirms before logging out",
+      },
     ],
   },
   {
     id: "2",
     company: "ScanMe",
-    logo: "/scanme.jpg",
+    logo: "/scanMeHomescreen.jpg",
+    fit: "cover",
     link: "https://github.com/OjogoMercy/ScanMeV2",
     highlights: [
       "Addressed the need for a reliable, offline-friendly QR scanning tool by building a utility app that goes beyond basic scanning into smart organization and accessibility.",
@@ -122,13 +198,29 @@ export const Projects: ProjectItem[] = [
       "Expo Router",
       "TypeScript",
       "Redux Toolkit",
-      " Expo-camera ",
+      "Expo-camera",
       "Zustand",
+    ],
+    screens: [
+      {
+        src: "/scanMeHomescreen.jpg",
+        alt: "ScanMe home screen with scan QR and scan text actions above a list of recent scans",
+        caption: "Home",
+        note: "Scan QR or text, with recent scans below",
+      },
+      {
+        src: "/scanMeModal.jpg",
+        alt: "ScanMe scan history with open, copy, star and delete actions on each scan",
+        caption: "Scan history",
+        note: "Open, copy, star or delete each scan",
+      },
     ],
   },
   {
     id: "3",
-    company: "Paylinc(Winner, Green Advocates Competition LAUTECH)",
+    company: "Paylinc",
+    award: "Green Advocates Competition, LAUTECH",
+    badge: "Winner",
     logo: "/paylinc.PNG",
     highlights: [
       "Solving the friction and leakage of cash-based fare collection on university transport by building a QR-based digital wallet system that lets students pay instantly without carrying cash.",
@@ -139,7 +231,7 @@ export const Projects: ProjectItem[] = [
       "Expo Router",
       "TypeScript",
       "Redux Toolkit",
-      " Expo-camera ",
+      "Expo-camera",
       "Zustand",
     ],
   },
@@ -147,6 +239,7 @@ export const Projects: ProjectItem[] = [
     id: "4",
     company: "AKAMS Solar",
     logo: "/akams.PNG",
+    fit: "cover",
     link: "https://www.akams-solar.com/",
     highlights: [
       "Addressed a solar energy client's need for a fast, professional web presence by building and deploying a marketing website from the ground up.",
@@ -157,7 +250,7 @@ export const Projects: ProjectItem[] = [
       "Tailwind",
       "Vercel",
       "Performance Optimization",
-      "javaScript",
+      "JavaScript",
     ],
   },
 ];
