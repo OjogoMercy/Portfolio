@@ -1,20 +1,53 @@
+import { useEffect, useRef } from "react";
 import { ArrowDown, Download } from "lucide-react";
 import { RESUME_URL } from "./Database";
 
 const noteClass =
-  "mt-3 text-center font-hand text-2xl leading-[1.05] font-bold text-pen lg:absolute lg:mt-0 lg:w-[130px]";
+  "mt-3 text-center font-hand text-2xl leading-[1.05] font-bold text-pen md:absolute md:mt-0 md:w-[130px]";
 
 export default function Hero() {
+  const stageRef = useRef<HTMLDivElement>(null);
+  const tiltRef = useRef<HTMLDivElement>(null);
+
+  /* Gentle tilt that follows the pointer. Fine pointers only, and off for reduced motion. */
+  useEffect(() => {
+    const stage = stageRef.current;
+    const phone = tiltRef.current;
+    if (!stage || !phone) return;
+
+    const canTilt = window.matchMedia(
+      "(hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference)",
+    ).matches;
+    if (!canTilt) return;
+
+    const onMove = (e: PointerEvent) => {
+      const rect = stage.getBoundingClientRect();
+      const x = ((e.clientX - rect.left) / rect.width - 0.5) * 2;
+      const y = ((e.clientY - rect.top) / rect.height - 0.5) * 2;
+      phone.style.transform = `perspective(1000px) rotateY(${(x * 5).toFixed(2)}deg) rotateX(${(-y * 4).toFixed(2)}deg)`;
+    };
+    const reset = () => {
+      phone.style.transform = "";
+    };
+
+    stage.addEventListener("pointermove", onMove);
+    stage.addEventListener("pointerleave", reset);
+    return () => {
+      stage.removeEventListener("pointermove", onMove);
+      stage.removeEventListener("pointerleave", reset);
+    };
+  }, []);
+
   return (
     <section
       id="top"
-      className="mx-auto grid w-full max-w-6xl items-center gap-12 px-5 pt-10 pb-16 sm:px-10 lg:grid-cols-2 lg:gap-6 lg:pt-16 lg:pb-24"
+      className="mx-auto grid w-full max-w-7xl items-center gap-12 px-5 pt-10 pb-16 sm:px-10 lg:grid-cols-2 lg:gap-6 lg:pt-16 lg:pb-24"
     >
       <div className="flex flex-col gap-5">
         <p className="text-sm font-bold tracking-[0.14em] text-ink-muted uppercase">
           Mercy Ojogo · Mobile and Full-Stack Engineer
         </p>
-        <h1 className="text-4xl leading-[1.04] font-extrabold tracking-tight text-balance sm:text-5xl lg:text-6xl">
+        <h1 className="text-4xl leading-[1.04] font-extrabold tracking-tight text-balance sm:text-5xl lg:text-6xl xl:text-7xl">
           I build mobile products that start with{" "}
           <span className="hl">better questions</span>.
         </h1>
@@ -50,8 +83,12 @@ export default function Hero() {
         </div>
       </div>
 
-      <div className="relative mx-auto w-full max-w-[520px]">
+      <div ref={stageRef} className="relative mx-auto w-full max-w-[520px]">
         <div className="relative mx-auto w-[250px]">
+          <div
+            ref={tiltRef}
+            className="relative transition-transform duration-200 ease-out will-change-transform"
+          >
           <div className="overflow-hidden rounded-[38px] border-[7px] border-ink bg-white shadow-[7px_8px_0_rgb(20_33_61/0.18)]">
             <img
               src="/OjivaHomescreen.jpg"
@@ -71,15 +108,16 @@ export default function Hero() {
             stroke="#d23a40"
             strokeWidth="2.5"
             strokeLinecap="round"
-            className="pointer-events-none absolute top-[53.5%] left-[5%] hidden h-[8%] w-[90%] lg:block"
+            className="pointer-events-none absolute top-[53.5%] left-[5%] hidden h-[8%] w-[90%] md:block"
           >
             <path
               vectorEffect="non-scaling-stroke"
               d="M10 22C6 8 60 3 105 4C160 5 196 12 192 23C188 34 130 38 70 36C28 35 8 31 11 20"
             />
           </svg>
+          </div>
 
-          <p className={`${noteClass} lg:top-[5%] lg:right-[calc(100%+12px)] lg:text-right`}>
+          <p className={`${noteClass} md:top-[5%] md:right-[calc(100%+12px)] md:text-right`}>
             Next dose, stage and doses due
             <svg
               aria-hidden="true"
@@ -91,14 +129,14 @@ export default function Hero() {
               strokeWidth="2.5"
               strokeLinecap="round"
               strokeLinejoin="round"
-              className="mt-1 ml-auto hidden lg:block"
+              className="mt-1 ml-auto hidden md:block"
             >
               <path d="M4 6C24 4 40 12 52 26" />
               <path d="M42 24L53 28L52 16" />
             </svg>
           </p>
 
-          <p className={`${noteClass} lg:top-[38%] lg:left-[calc(100%+12px)] lg:text-left`}>
+          <p className={`${noteClass} md:top-[38%] md:left-[calc(100%+12px)] md:text-left`}>
             Progress tracked for each child
             <svg
               aria-hidden="true"
@@ -110,14 +148,14 @@ export default function Hero() {
               strokeWidth="2.5"
               strokeLinecap="round"
               strokeLinejoin="round"
-              className="mt-1 hidden lg:block"
+              className="mt-1 hidden md:block"
             >
               <path d="M60 6C40 6 22 14 10 28" />
               <path d="M8 16L9 29L21 26" />
             </svg>
           </p>
 
-          <p className={`${noteClass} lg:top-[66%] lg:right-[calc(100%+12px)] lg:text-right`}>
+          <p className={`${noteClass} md:top-[66%] md:right-[calc(100%+12px)] md:text-right`}>
             Status shown for each vaccine
             <svg
               aria-hidden="true"
@@ -129,14 +167,14 @@ export default function Hero() {
               strokeWidth="2.5"
               strokeLinecap="round"
               strokeLinejoin="round"
-              className="mt-1 ml-auto hidden lg:block"
+              className="mt-1 ml-auto hidden md:block"
             >
               <path d="M4 6C24 8 42 16 56 30" />
               <path d="M46 29L57 31L55 20" />
             </svg>
           </p>
 
-          <figure className="relative mx-auto mt-8 w-[150px] rotate-[5deg] border border-ink bg-white p-[7px] pb-7 shadow-[4px_5px_0_rgb(20_33_61/0.18)] before:absolute before:-top-3 before:left-1/2 before:h-5 before:w-16 before:-translate-x-1/2 before:-rotate-[4deg] before:bg-marker/80 before:content-[''] lg:absolute lg:-bottom-6 lg:left-[calc(100%-30px)] lg:mt-0">
+          <figure className="relative mx-auto mt-8 w-[150px] rotate-[5deg] border border-ink bg-white p-[7px] pb-7 shadow-[4px_5px_0_rgb(20_33_61/0.18)] before:absolute before:-top-3 before:left-1/2 before:h-5 before:w-16 before:-translate-x-1/2 before:-rotate-[4deg] before:bg-marker/80 before:content-[''] md:absolute md:-bottom-6 md:left-[calc(100%-30px)] md:mt-0">
             <img
               src="/MyPicture.jpg"
               width={720}

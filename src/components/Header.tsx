@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Menu, X } from "lucide-react";
 import { RESUME_URL } from "./Database";
 
 const links = [
@@ -11,6 +12,7 @@ const links = [
 
 export default function Header() {
   const [active, setActive] = useState("");
+  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
     const sections = links
@@ -30,13 +32,23 @@ export default function Header() {
     return () => observer.disconnect();
   }, []);
 
+  useEffect(() => {
+    if (!menuOpen) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setMenuOpen(false);
+    };
+    document.addEventListener("keydown", onKey);
+    return () => document.removeEventListener("keydown", onKey);
+  }, [menuOpen]);
+
   return (
     <header className="sticky top-0 z-40 border-b border-grid bg-paper/90 backdrop-blur">
-      <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-x-6 gap-y-2 px-5 py-3 sm:px-10">
+      <div className="scroll-progress" aria-hidden="true" />
+      <div className="mx-auto flex max-w-7xl items-center justify-between gap-6 px-5 py-3 sm:px-10">
         <a href="#top" className="text-lg font-extrabold tracking-tight">
           Mercy Ojogo
         </a>
-        <nav aria-label="Sections" className="flex items-center gap-5 sm:gap-7">
+        <nav aria-label="Sections" className="flex items-center gap-4 sm:gap-7">
           {links.map(({ id, label }) => (
             <a
               key={id}
@@ -51,6 +63,20 @@ export default function Header() {
               {label}
             </a>
           ))}
+          <button
+            type="button"
+            onClick={() => setMenuOpen((open) => !open)}
+            aria-expanded={menuOpen}
+            aria-controls="mobile-menu"
+            className="grid size-10 place-items-center rounded-md border border-ink/30 bg-white md:hidden"
+          >
+            {menuOpen ? (
+              <X aria-hidden="true" className="size-5" />
+            ) : (
+              <Menu aria-hidden="true" className="size-5" />
+            )}
+            <span className="sr-only">{menuOpen ? "Close menu" : "Open menu"}</span>
+          </button>
           <a
             href={RESUME_URL}
             target="_blank"
@@ -61,6 +87,29 @@ export default function Header() {
           </a>
         </nav>
       </div>
+
+      {menuOpen && (
+        <nav
+          id="mobile-menu"
+          aria-label="Sections"
+          className="border-t border-grid bg-paper px-5 pb-4 md:hidden"
+        >
+          <ul>
+            {links.map(({ id, label }) => (
+              <li key={id} className="border-b border-ink/10 last:border-b-0">
+                <a
+                  href={`#${id}`}
+                  onClick={() => setMenuOpen(false)}
+                  aria-current={active === id ? "true" : undefined}
+                  className="block py-3.5 text-lg font-bold"
+                >
+                  {label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      )}
     </header>
   );
 }

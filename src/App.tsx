@@ -6,7 +6,7 @@ import FeaturedProject from "./components/FeaturedProject";
 import Header from "./components/Header";
 import Hero from "./components/Hero";
 import ProjectCard from "./components/ProjectCard";
-import ProofBand from "./components/ProofBand";
+import ProofRibbon from "./components/ProofRibbon";
 import SectionHeading from "./components/SectionHeading";
 import Skills from "./components/Skills";
 
@@ -30,11 +30,11 @@ function App() {
 
       <main id="main">
         <Hero />
-        <ProofBand />
+        <ProofRibbon />
 
         <section
           id="projects"
-          className="mx-auto w-full max-w-6xl scroll-mt-20 px-5 pt-20 pb-24 sm:px-10"
+          className="mx-auto w-full max-w-7xl scroll-mt-20 px-5 pt-20 pb-24 sm:px-10"
         >
           <SectionHeading>Work</SectionHeading>
           <p className="mt-4 mb-10 max-w-xl text-lg text-ink-soft">
@@ -59,7 +59,7 @@ function App() {
 
         <section
           id="experience"
-          className="mx-auto w-full max-w-6xl scroll-mt-20 px-5 pb-24 sm:px-10"
+          className="mx-auto w-full max-w-7xl scroll-mt-20 px-5 pb-24 sm:px-10"
         >
           <SectionHeading>Experience</SectionHeading>
           <div className="mt-10 space-y-10">
@@ -71,10 +71,10 @@ function App() {
 
         <section
           id="about"
-          className="mx-auto w-full max-w-6xl scroll-mt-20 px-5 pb-24 sm:px-10"
+          className="mx-auto w-full max-w-7xl scroll-mt-20 px-5 pb-24 sm:px-10"
         >
           <SectionHeading>About</SectionHeading>
-          <div className="mt-10 grid gap-10 border-t border-ink/20 pt-10 lg:grid-cols-[1fr_1.15fr] lg:gap-16">
+          <div className="reveal mt-10 grid gap-10 border-t border-ink/20 pt-10 lg:grid-cols-[1fr_1.15fr] lg:gap-16">
             <p className="text-2xl leading-snug font-extrabold tracking-tight text-balance sm:text-3xl">
               Good software isn't just built with code. It's built through{" "}
               <span className="underline decoration-pen decoration-wavy decoration-2 underline-offset-[7px]">
@@ -110,9 +110,9 @@ function App() {
 
         <section
           id="contact"
-          className="mx-auto w-full max-w-6xl scroll-mt-20 px-5 pb-28 sm:px-10"
+          className="mx-auto w-full max-w-7xl scroll-mt-20 px-5 pb-28 sm:px-10"
         >
-          <div className="grid items-end gap-10 border-t-4 border-ink pt-14 lg:grid-cols-[1.4fr_1fr] lg:gap-16">
+          <div className="reveal grid items-end gap-10 border-t-4 border-ink pt-14 lg:grid-cols-[1.4fr_1fr] lg:gap-16">
             <h2 className="text-4xl leading-[1.08] font-extrabold tracking-tight text-balance sm:text-5xl lg:text-6xl">
               If you're building products that value{" "}
               <span className="hl">thoughtful engineering</span> and product

@@ -59,3 +59,56 @@
   );
   padding-inline: 2px;
 }
+
+/* Metrics ribbon: two identical groups, so moving by half the track loops seamlessly */
+@keyframes ribbon {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* Thin progress line along the top of the header, driven by page scroll */
+.scroll-progress {
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 3px;
+  background: var(--color-pen);
+  transform: scaleX(0);
+  transform-origin: left;
+  pointer-events: none;
+}
+
+@keyframes grow-x {
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes reveal-up {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Scroll-driven effects are progressive enhancement: unsupported browsers and
+   reduced-motion users get the finished page with nothing hidden. */
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .scroll-progress {
+      animation: grow-x linear both;
+      animation-timeline: scroll(root);
+    }
+
+    .reveal {
+      animation: reveal-up linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 30%;
+    }
+  }
+}

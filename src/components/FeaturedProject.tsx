@@ -12,7 +12,7 @@ export default function FeaturedProject({
   flip?: boolean;
 }) {
   return (
-    <article className="grid items-center gap-10 border-t border-ink/20 py-14 lg:grid-cols-2 lg:gap-16">
+    <article className="reveal grid items-center gap-10 border-t border-ink/20 py-14 lg:grid-cols-2 lg:gap-16">
       <div className={flip ? "lg:order-2" : ""}>
         <h3 className="text-4xl leading-none font-extrabold tracking-tight sm:text-5xl">
           {item.company}
@@ -45,7 +45,7 @@ export default function FeaturedProject({
 
       <div className="mx-auto grid w-full max-w-[540px] grid-cols-2 gap-5 sm:gap-8">
         {item.screens?.map((screen) => (
-          <figure key={screen.src} className="flex flex-col gap-3">
+          <figure key={screen.src} className="flex flex-col gap-3 transition-transform duration-300 ease-out motion-safe:hover:-translate-y-1.5 lg:nth-2:mt-12">
             <div className="overflow-hidden rounded-[28px] border-[6px] border-ink bg-white shadow-[6px_7px_0_rgb(20_33_61/0.18)]">
               <img
                 src={screen.src}

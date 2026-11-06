@@ -6,7 +6,7 @@ import TagList from "./TagList";
 
 export default function ProjectCard({ item }: { item: ProjectItem }) {
   return (
-    <article className="relative flex flex-col gap-4 border border-ink bg-white p-4 pb-6 shadow-[5px_5px_0_var(--color-ink)] before:absolute before:-top-2.5 before:left-1/2 before:size-4 before:-translate-x-1/2 before:rounded-full before:border-2 before:border-ink before:bg-pen before:content-['']">
+    <article className="reveal relative flex flex-col gap-4 border border-ink bg-white p-4 pb-6 shadow-[5px_5px_0_var(--color-ink)] transition-[translate,box-shadow] duration-200 motion-safe:hover:-translate-y-1 hover:shadow-[7px_8px_0_var(--color-ink)] before:absolute before:-top-2.5 before:left-1/2 before:size-4 before:-translate-x-1/2 before:rounded-full before:border-2 before:border-ink before:bg-pen before:content-['']">
       {item.badge && (
         <span className="absolute -top-4 -right-3 rotate-[4deg] rounded-md border-2 border-pen bg-white px-2.5 py-1 text-xs leading-none font-extrabold tracking-wider text-pen uppercase">
           {item.badge}
