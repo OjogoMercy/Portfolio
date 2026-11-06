@@ -49,6 +49,8 @@ export interface ExperienceItem {
   id: string;
   company: string;
   role: string;
+  period: string;
+  location: string;
   logo: string;
   highlights: string[];
   tags: string[];
@@ -61,9 +63,15 @@ export interface ProjectScreen {
   note: string;
 }
 
+export interface ProjectStory {
+  label: string;
+  text: string;
+}
+
 export interface ProjectItem {
   id: string;
   company: string;
+  story?: ProjectStory;
   award?: string;
   badge?: string;
   logo: string;
@@ -79,6 +87,8 @@ export const experience: ExperienceItem[] = [
     id: "1",
     company: "Ransact",
     role: "Frontend Mobile Developer",
+    period: "Jan 2026 – Present",
+    location: "Remote",
     logo: "/ransact.png",
     highlights: [
       "Developed a cross-platform fintech application using React Native, Expo Router, and TypeScript.",
@@ -96,9 +106,25 @@ export const experience: ExperienceItem[] = [
     ],
   },
   {
+    id: "3",
+    company: "CowryWise",
+    role: "Campus Ambassador",
+    period: "Apr 2025 – Present",
+    location: "Ogbomosho, Nigeria",
+    logo: "/cowry.webp",
+    highlights: [
+      "Served as a tech advocate, promoting digital financial tools and onboarding users through peer-led sessions",
+      "Organized community events focused on financial literacy, increasing platform adoption within the campus community",
+      "Strengthened speaking and cross-functional communication skills",
+    ],
+    tags: ["Community Advocacy", "Financial Literacy", "Onboarding"],
+  },
+  {
     id: "2",
     company: "Cephas ICT Hub",
     role: "Mobile Application Developer",
+    period: "Apr 2025 – Dec 2025",
+    location: "Ogbomosho, Nigeria",
     logo: "/Cephas.jpg",
     highlights: [
       "Developed mobile applications using React Native, Expo, AsyncStorage, Redux Toolkit, and Zustand",
@@ -112,18 +138,6 @@ export const experience: ExperienceItem[] = [
       "Redux Toolkit",
       "Zustand",
     ],
-  },
-  {
-    id: "3",
-    company: "CowryWise",
-    role: "Campus Ambassador",
-    logo: "/cowry.webp",
-    highlights: [
-      "Served as a tech advocate, promoting digital financial tools and onboarding users through peer-led sessions",
-      "Organized community events focused on financial literacy, increasing platform adoption within the campus community",
-      "Strengthened speaking and cross-functional communication skills",
-    ],
-    tags: ["Community Advocacy", "Financial Literacy", "Onboarding"],
   },
 ];
 
@@ -150,6 +164,10 @@ export const Projects: ProjectItem[] = [
   {
     id: "1",
     company: "Ojiva",
+    story: {
+      label: "The question",
+      text: "Almost every Nigerian shares the same experience of immunisation as a child, and most families go along with it even when there could be a better alternative. Ojiva came from asking what that alternative could look like.",
+    },
     logo: "/OjivaHomescreen.jpg",
     fit: "cover",
     link: "https://github.com/OjogoMercy/HealthCard",
@@ -186,6 +204,10 @@ export const Projects: ProjectItem[] = [
   {
     id: "2",
     company: "ScanMe",
+    story: {
+      label: "Why I built it",
+      text: "I keep a lot of notes and wanted an easy way to keep track of the things I find useful every day. ScanMe is how I made that easier for myself.",
+    },
     logo: "/scanMeHomescreen.jpg",
     fit: "cover",
     link: "https://github.com/OjogoMercy/ScanMeV2",
@@ -221,6 +243,10 @@ export const Projects: ProjectItem[] = [
     company: "Paylinc",
     award: "Green Advocates Competition, LAUTECH",
     badge: "Winner",
+    story: {
+      label: "Status",
+      text: "A startup I'm actively building with classmates from university.",
+    },
     logo: "/paylinc.PNG",
     highlights: [
       "Solving the friction and leakage of cash-based fare collection on university transport by building a QR-based digital wallet system that lets students pay instantly without carrying cash.",

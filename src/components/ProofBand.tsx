@@ -4,7 +4,7 @@ const proof = [
   { value: "1st", label: "Pima Health Hackathon" },
   { value: "Winner", label: "Green Advocates Competition, LAUTECH" },
   { value: "16%", label: "usability improvement at Cephas ICT Hub" },
-  { value: String(Projects.length), label: "projects built and shipped" },
+  { value: String(Projects.length), label: "projects built" },
 ];
 
 export default function ProofBand() {

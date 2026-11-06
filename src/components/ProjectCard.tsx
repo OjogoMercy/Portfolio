@@ -1,6 +1,7 @@
 import { ArrowUpRight } from "lucide-react";
 import { projectLinkLabel } from "./Database";
 import type { ProjectItem } from "./Database";
+import StoryNote from "./StoryNote";
 import TagList from "./TagList";
 
 export default function ProjectCard({ item }: { item: ProjectItem }) {
@@ -31,6 +32,7 @@ export default function ProjectCard({ item }: { item: ProjectItem }) {
             <p className="text-sm font-bold text-ink-muted">{item.award}</p>
           )}
         </div>
+        {item.story && <StoryNote story={item.story} />}
         {item.highlights.map((point) => (
           <p key={point} className="leading-relaxed text-ink-soft">
             {point}

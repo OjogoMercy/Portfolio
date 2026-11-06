@@ -76,9 +76,11 @@ function App() {
           <SectionHeading>About</SectionHeading>
           <div className="mt-10 grid gap-10 border-t border-ink/20 pt-10 lg:grid-cols-[1fr_1.15fr] lg:gap-16">
             <p className="text-2xl leading-snug font-extrabold tracking-tight text-balance sm:text-3xl">
-              Good software isn't just built with code. It's built through
-              hundreds of thoughtful decisions about users, trade-offs, and
-              long-term maintainability.
+              Good software isn't just built with code. It's built through{" "}
+              <span className="underline decoration-pen decoration-wavy decoration-2 underline-offset-[7px]">
+                hundreds of thoughtful decisions
+              </span>{" "}
+              about users, trade-offs, and long-term maintainability.
             </p>
             <div className="space-y-4 text-lg leading-relaxed text-ink-soft">
               <p>
@@ -102,33 +104,36 @@ function App() {
                 problem well enough to know what should be built in the first
                 place.
               </p>
-              <p>
-                If you're building products that value thoughtful engineering
-                and product thinking, I'd love to connect.
-              </p>
             </div>
           </div>
         </section>
 
         <section
           id="contact"
-          className="mx-auto flex w-full max-w-6xl scroll-mt-20 flex-wrap items-center gap-x-12 gap-y-8 px-5 pb-24 sm:px-10"
+          className="mx-auto w-full max-w-6xl scroll-mt-20 px-5 pb-28 sm:px-10"
         >
-          <div className="min-w-[260px] -rotate-2 bg-marker px-6 py-5 shadow-[4px_5px_0_rgb(20_33_61/0.2)]">
-            <h2 className="text-2xl leading-none font-extrabold tracking-tight">
-              Contact
+          <div className="grid items-end gap-10 border-t-4 border-ink pt-14 lg:grid-cols-[1.4fr_1fr] lg:gap-16">
+            <h2 className="text-4xl leading-[1.08] font-extrabold tracking-tight text-balance sm:text-5xl lg:text-6xl">
+              If you're building products that value{" "}
+              <span className="hl">thoughtful engineering</span> and product
+              thinking, I'd love to connect.
             </h2>
-            <p className="mt-2 font-bold break-all">mercyojogo@gmail.com</p>
-          </div>
-          <div className="flex flex-col gap-4">
-            <a
-              href="mailto:mercyojogo@gmail.com"
-              className="inline-flex w-fit items-center gap-2 rounded-md bg-ink px-5 py-3 font-bold text-white shadow-[4px_4px_0_var(--color-sky)]"
-            >
-              <Mail aria-hidden="true" className="size-4" />
-              Send an email
-            </a>
-            <div className="flex gap-3">
+            <div className="flex flex-col items-start gap-5">
+              <p className="inline-flex items-center gap-2 text-sm font-bold">
+                <span
+                  aria-hidden="true"
+                  className="size-2 rounded-full bg-[#1f8a4c]"
+                />
+                Open to remote roles
+              </p>
+              <a
+                href="mailto:mercyojogo@gmail.com"
+                className="inline-flex items-center gap-3 rounded-md bg-ink px-6 py-4 text-lg font-bold break-all text-white shadow-[5px_5px_0_var(--color-sky)] transition-transform hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-[3px_3px_0_var(--color-sky)]"
+              >
+                <Mail aria-hidden="true" className="size-5 shrink-0" />
+                mercyojogo@gmail.com
+              </a>
+              <div className="flex gap-3">
               <a
                 href="https://github.com/OjogoMercy"
                 target="_blank"
@@ -163,6 +168,7 @@ function App() {
               >
                 <Phone aria-hidden="true" className="size-5" />
               </a>
+              </div>
             </div>
           </div>
         </section>

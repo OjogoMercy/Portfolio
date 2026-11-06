@@ -1,6 +1,7 @@
 import { ArrowUpRight } from "lucide-react";
 import { projectLinkLabel } from "./Database";
 import type { ProjectItem } from "./Database";
+import StoryNote from "./StoryNote";
 import TagList from "./TagList";
 
 export default function FeaturedProject({
@@ -16,6 +17,11 @@ export default function FeaturedProject({
         <h3 className="text-4xl leading-none font-extrabold tracking-tight sm:text-5xl">
           {item.company}
         </h3>
+        {item.story && (
+          <div className="mt-6">
+            <StoryNote story={item.story} />
+          </div>
+        )}
         <div className="mt-6 space-y-4 text-lg leading-relaxed text-ink-soft">
           {item.highlights.map((point) => (
             <p key={point}>{point}</p>

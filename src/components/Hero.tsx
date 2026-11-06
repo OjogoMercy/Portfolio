@@ -23,7 +23,14 @@ export default function Hero() {
           product problems, working with React Native, TypeScript, Node.js and
           PostgreSQL.
         </p>
-        <div className="mt-1 flex flex-wrap items-center gap-x-6 gap-y-4">
+        <p className="inline-flex items-center gap-2 text-sm font-bold">
+          <span
+            aria-hidden="true"
+            className="size-2 rounded-full bg-[#1f8a4c]"
+          />
+          Open to remote roles
+        </p>
+        <div className="flex flex-wrap items-center gap-x-6 gap-y-4">
           <a
             href="#projects"
             className="inline-flex items-center gap-2 rounded-md bg-ink px-5 py-3 font-bold text-white shadow-[4px_4px_0_var(--color-sky)] transition-transform hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-[2px_2px_0_var(--color-sky)]"
