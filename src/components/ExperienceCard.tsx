@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import { useReveal } from "../hooks/useReveal";
 import type { ExperienceItem } from "./Database";
 import TagList from "./TagList";
 
@@ -19,8 +20,10 @@ function markUp(text: string): ReactNode[] {
 }
 
 export default function ExperienceCard({ item }: { item: ExperienceItem }) {
+  const ref = useReveal<HTMLElement>();
+
   return (
-    <article className="reveal relative grid gap-5 border-t border-ink/20 pt-8 before:absolute before:-top-[5px] before:left-0 before:size-2.5 before:rounded-full before:bg-pen before:content-[''] md:grid-cols-[260px_1fr] md:gap-10">
+    <article ref={ref} className="relative grid gap-5 border-t border-ink/20 pt-8 before:absolute before:-top-[5px] before:left-0 before:size-2.5 before:rounded-full before:bg-pen before:content-[''] md:grid-cols-[260px_1fr] md:gap-10">
       <div className="flex items-center gap-4 md:items-start">
         <img
           src={item.logo}

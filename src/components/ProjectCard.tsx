@@ -1,12 +1,24 @@
 import { ArrowUpRight } from "lucide-react";
+import { useReveal } from "../hooks/useReveal";
 import { projectLinkLabel } from "./Database";
 import type { ProjectItem } from "./Database";
 import StoryNote from "./StoryNote";
 import TagList from "./TagList";
 
-export default function ProjectCard({ item }: { item: ProjectItem }) {
+export default function ProjectCard({
+  item,
+  index,
+}: {
+  item: ProjectItem;
+  index: number;
+}) {
+  const ref = useReveal<HTMLElement>((index % 3) * 130);
+
   return (
-    <article className="reveal relative flex flex-col gap-4 border border-ink bg-white p-4 pb-6 shadow-[5px_5px_0_var(--color-ink)] transition-[translate,box-shadow] duration-200 motion-safe:hover:-translate-y-1 hover:shadow-[7px_8px_0_var(--color-ink)] before:absolute before:-top-2.5 before:left-1/2 before:size-4 before:-translate-x-1/2 before:rounded-full before:border-2 before:border-ink before:bg-pen before:content-['']">
+    <article
+      ref={ref}
+      className="relative flex flex-col gap-4 border border-ink bg-white p-4 pb-6 shadow-[5px_5px_0_var(--color-ink)] transition-[translate,box-shadow] duration-200 hover:shadow-[7px_8px_0_var(--color-ink)] active:-translate-y-1 motion-safe:hover:-translate-y-1 before:absolute before:-top-2.5 before:left-1/2 before:size-4 before:-translate-x-1/2 before:rounded-full before:border-2 before:border-ink before:bg-pen before:content-['']"
+    >
       {item.badge && (
         <span className="absolute -top-4 -right-3 rotate-[4deg] rounded-md border-2 border-pen bg-white px-2.5 py-1 text-xs leading-none font-extrabold tracking-wider text-pen uppercase">
           {item.badge}

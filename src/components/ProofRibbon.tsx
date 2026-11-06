@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Pause, Play } from "lucide-react";
 
 const metrics = [
@@ -46,6 +46,42 @@ function Group({ duplicate = false }: { duplicate?: boolean }) {
 
 export default function ProofRibbon() {
   const [paused, setPaused] = useState(false);
+  const trackRef = useRef<HTMLDivElement>(null);
+
+  /* The ribbon speeds up while you scroll and eases back, so it reacts to a thumb as well as a wheel. */
+  useEffect(() => {
+    const track = trackRef.current;
+    if (!track) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    let lastY = window.scrollY;
+    let boost = 0;
+    let frame = 0;
+
+    const tick = () => {
+      boost *= 0.95;
+      const animation = track.getAnimations()[0];
+      if (animation) animation.playbackRate = 1 + boost;
+      if (boost > 0.02) {
+        frame = requestAnimationFrame(tick);
+      } else {
+        frame = 0;
+        if (animation) animation.playbackRate = 1;
+      }
+    };
+    const onScroll = () => {
+      const y = window.scrollY;
+      boost = Math.min(boost + Math.abs(y - lastY) * 0.06, 9);
+      lastY = y;
+      if (!frame) frame = requestAnimationFrame(tick);
+    };
+
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      if (frame) cancelAnimationFrame(frame);
+    };
+  }, []);
 
   return (
     <section
@@ -54,7 +90,8 @@ export default function ProofRibbon() {
     >
       <div className="overflow-hidden [mask-image:linear-gradient(90deg,transparent,#000_5%,#000_95%,transparent)] motion-reduce:[mask-image:none]">
         <div
-          className={`flex w-max animate-[ribbon_70s_linear_infinite] group-focus-within:[animation-play-state:paused] group-hover:[animation-play-state:paused] motion-reduce:w-full motion-reduce:animate-none ${
+          ref={trackRef}
+          className={`flex w-max animate-[ribbon_45s_linear_infinite] group-focus-within:[animation-play-state:paused] group-hover:[animation-play-state:paused] motion-reduce:w-full motion-reduce:animate-none ${
             paused ? "[animation-play-state:paused]" : ""
           }`}
         >
@@ -67,7 +104,7 @@ export default function ProofRibbon() {
         type="button"
         onClick={() => setPaused((p) => !p)}
         aria-pressed={paused}
-        className="absolute top-1/2 right-3 z-10 grid size-9 -translate-y-1/2 place-items-center rounded-full border border-paper/30 bg-ink/90 text-paper transition-colors hover:bg-paper hover:text-ink motion-reduce:hidden"
+        className="absolute top-1/2 right-3 z-10 grid size-10 -translate-y-1/2 place-items-center rounded-full border border-paper/30 bg-ink/90 text-paper transition-colors hover:bg-paper hover:text-ink active:scale-95 motion-reduce:hidden"
       >
         {paused ? (
           <Play aria-hidden="true" className="size-4" />
