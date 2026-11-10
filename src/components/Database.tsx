@@ -1,5 +1,5 @@
 export const RESUME_URL =
-  "https://drive.google.com/file/d/1OPn-Ew4F8X6JnpverHunP2daEI2_9bv3/view?usp=drive_link";
+  "https://drive.google.com/file/d/1tbdBeJZ47FlYmO4527FEbG4n0hFQ9U3x/view?usp=drive_link";
 
 export const projectLinkLabel = (link: string) =>
   link.includes("github.com") ? "View on GitHub" : "Visit live site";
@@ -41,7 +41,13 @@ export const skills: SkillGroup[] = [
   },
   {
     label: "Testing and delivery",
-    items: ["Jest", "TestFlight", "Render", "Vercel", "Performance optimization"],
+    items: [
+      "Jest",
+      "TestFlight",
+      "Render",
+      "Vercel",
+      "Performance optimization",
+    ],
   },
 ];
 

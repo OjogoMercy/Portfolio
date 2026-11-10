@@ -75,7 +75,9 @@ export default function Hero() {
       frame = 0;
       const y = Math.min(window.scrollY, 900);
       device.style.translate = `0 ${(-y * 0.1).toFixed(1)}px`;
-      photo.style.translate = wide.matches ? `0 ${(-y * 0.14).toFixed(1)}px` : "";
+      photo.style.translate = wide.matches
+        ? `0 ${(-y * 0.14).toFixed(1)}px`
+        : "";
     };
     const onScroll = () => {
       if (!frame) frame = requestAnimationFrame(update);
@@ -151,9 +153,9 @@ export default function Hero() {
 
       <div
         ref={stageRef}
-        className="relative mx-auto w-full max-w-[520px] touch-pan-y select-none"
+        className="relative mx-auto w-full max-w-130 touch-pan-y select-none"
       >
-        <div ref={deviceRef} className="relative mx-auto w-[250px]">
+        <div ref={deviceRef} className="relative mx-auto w-62.5">
           <div className="intro-phone">
             <div className="sway">
               <div
